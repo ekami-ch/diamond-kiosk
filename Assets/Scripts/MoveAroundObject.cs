@@ -34,7 +34,7 @@ public class MoveAroundObject : MonoBehaviour
         // Apply clamping for x rotation 
         _rotationX = Mathf.Clamp(_rotationX, _rotationXMinMax.x, _rotationXMinMax.y);
 
-        Vector3 nextRotation = new Vector3(31.0f, _rotationY);
+        Vector3 nextRotation = new Vector3(51.0f, _rotationY);
 
         // Apply damping between rotation changes
         _currentRotation = Vector3.SmoothDamp(_currentRotation, nextRotation, ref _smoothVelocity, _smoothTime);
