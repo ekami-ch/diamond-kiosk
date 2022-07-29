@@ -601,6 +601,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1360520731}
+  ticket: {fileID: 0}
+  printButton: {fileID: 0}
 --- !u!95 &1360520734
 Animator:
   serializedVersion: 4
