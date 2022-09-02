@@ -23,26 +23,49 @@ public class OpenTopPannel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) && !animTarget.GetBool("Opened"))
+        // if (Input.GetMouseButtonDown(1) && !animTarget.GetBool("Opened"))
+        // {
+        //     animTarget.SetBool("Opened", true);
+        //     if(ticket != null) {
+        //         ticketAnimatorTarget.SetBool("print", false);
+        //         ticketRenderer.enabled = false;
+        //         printButton.SetActive(false);
+        //     }
+            
+        // }
+        // else if (Input.GetMouseButtonDown(1) && animTarget.GetBool("Opened"))
+        // {
+        //     animTarget.SetBool("Opened", false);
+        //     if(ticket != null) {
+        //         ticketAnimatorTarget.SetBool("print", false);
+        //         ticketRenderer.enabled = true;
+        //         printButton.SetActive(true);
+        //     }
+            
+        //}
+
+    }
+
+    public void OpenOrCloseTopPannel() {
+        if (!animTarget.GetBool("Opened"))
         {
             animTarget.SetBool("Opened", true);
             if(ticket != null) {
                 ticketAnimatorTarget.SetBool("print", false);
-                ticketRenderer.enabled = false;
-                printButton.SetActive(false);
+                //ticketRenderer.enabled = false;
+                //printButton.SetActive(false);
             }
             
         }
-        else if (Input.GetMouseButtonDown(1) && animTarget.GetBool("Opened"))
+        else if (animTarget.GetBool("Opened"))
         {
             animTarget.SetBool("Opened", false);
             if(ticket != null) {
                 ticketAnimatorTarget.SetBool("print", false);
-                ticketRenderer.enabled = true;
-                printButton.SetActive(true);
+                //ticketRenderer.enabled = true;
+                //printButton.SetActive(true);
             }
             
         }
-
     }
 }
