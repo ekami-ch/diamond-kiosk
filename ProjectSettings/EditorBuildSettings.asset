@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Imports/Simple Garage/Scenes/GarageScene.unity
     guid: 9a3a6f40dd34f0640b9d7f22b71a1745
-  - enabled: 1
+  - enabled: 0
     path: Assets/Imports/Christmas Scene/Assets/Scene/RoomScene.unity
     guid: beebb466b517c6f46806fa2ee73f8580
+  - enabled: 1
+    path: Assets/Imports/Pharmacy/Scenes/PharmacyScene.unity
+    guid: a144a6a97d76b7b4fb0999c1ed3c1b50
   m_configObjects: {}

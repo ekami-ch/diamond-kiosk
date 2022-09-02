@@ -2254,6 +2254,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6251681963123543185, guid: 5f271d6102c94884fa84cc311082c995, type: 3}
+      propertyPath: m_AllowMSAA
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6251681963123543187, guid: 5f271d6102c94884fa84cc311082c995, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -2429,10 +2433,46 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -2.336
       objectReference: {fileID: 0}
+    - target: {fileID: 966318315760056739, guid: e6084503f826bbb428b1e677dc1a75d4, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 966318315760056739, guid: e6084503f826bbb428b1e677dc1a75d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1d0c85a40adbb0e41be6404db12b98c4, type: 2}
+    - target: {fileID: 3162156601251043514, guid: e6084503f826bbb428b1e677dc1a75d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 3322860950725416119, guid: 855de4ea21d5fe2428038de2e0d0371f, type: 3}
+    - target: {fileID: 3557421762398961210, guid: e6084503f826bbb428b1e677dc1a75d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c53280afd32a04549a49e642b5ec08d1, type: 2}
+    - target: {fileID: 3610470584160823950, guid: e6084503f826bbb428b1e677dc1a75d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 3322860950725416119, guid: 855de4ea21d5fe2428038de2e0d0371f, type: 3}
+    - target: {fileID: 4342009285815005619, guid: e6084503f826bbb428b1e677dc1a75d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 3322860950725416119, guid: 855de4ea21d5fe2428038de2e0d0371f, type: 3}
+    - target: {fileID: 4639322802915347765, guid: e6084503f826bbb428b1e677dc1a75d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 3322860950725416119, guid: 855de4ea21d5fe2428038de2e0d0371f, type: 3}
     - target: {fileID: 5178501814670129849, guid: e6084503f826bbb428b1e677dc1a75d4, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6756649725949184297, guid: e6084503f826bbb428b1e677dc1a75d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49d6cde84cf7a9d4aae1d7573eee691d, type: 2}
+    - target: {fileID: 7847398890508988860, guid: e6084503f826bbb428b1e677dc1a75d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7ef4fb80a8e8ba548aacc1d07b7b1b39, type: 2}
     - target: {fileID: 8349294973750491670, guid: e6084503f826bbb428b1e677dc1a75d4, type: 3}
       propertyPath: m_Name
       value: Garage

@@ -23,6 +23,8 @@ public class PrintTicket : MonoBehaviour
         else {
             animTarget.SetBool("print", false);
         }
+
+        print(animTarget.GetBool("print"));
         
     }
 }
