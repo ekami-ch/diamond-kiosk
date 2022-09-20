@@ -30,6 +30,11 @@ public class TextureDropdownHandler : MonoBehaviour
             body.GetComponent<Renderer>().material = targetBodiesMaterials[index];
         }
     }
+
+    public void pointerClick() {
+        dropdown = GetComponent<TMP_Dropdown>();
+        DropdownItemSelected(dropdown);
+    }
     // Update is called once per frame
     void Update()
     {
