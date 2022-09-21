@@ -23,6 +23,10 @@ public class CameraRotation : MonoBehaviour
         fov -= Input.GetAxis("Mouse ScrollWheel") * scrollSensitivity;
         fov = Mathf.Clamp(fov, minZoom, maxZoom);
         cam.fieldOfView = fov;
+        // float scrollAxis = Input.GetAxis ("Mouse ScrollWheel");
+        // if ( Input.GetAxis("Mouse ScrollWheel") > 0) {     
+        //     cam.transform.Translate(Vector3.forward * Time.deltaTime * 10000f * scrollAxis, Space.Self );
+        // }
 
         if (Input.GetMouseButtonDown(0))
         {
