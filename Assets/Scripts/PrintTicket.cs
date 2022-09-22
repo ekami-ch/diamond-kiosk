@@ -18,9 +18,11 @@ public class PrintTicket : MonoBehaviour
     {
         if(!animTarget.GetBool("print"))
         {
+            target.SetActive(true);
             animTarget.SetBool("print", true);
         }
         else {
+            target.SetActive(false);
             animTarget.SetBool("print", false);
         }
 
