@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class CameraRotation : MonoBehaviour
 {
     public Camera cam;
@@ -10,19 +10,42 @@ public class CameraRotation : MonoBehaviour
     public float minRotationX = 31;
     private Vector3 previousPosition;
 
-    public float minZoom = 1.0f;
-    public float maxZoom = 90.0f;
+    //public bool fovZoom = false;
+
+    public Slider zoomSlider;
+    public float minFovZoom = 1.0f;
+    public float maxFovZoom = 90.0f;
     public float scrollSensitivity = 20.0f;
 
     private float fov;
+
+    void Start() {
+        zoomSlider.minValue = minFovZoom;
+        zoomSlider.maxValue = maxFovZoom;
+    }
  
 
     void Update()
     {
+        // FOV Zoom method
+        //if(fovZoom) {
         fov = cam.fieldOfView;
         fov -= Input.GetAxis("Mouse ScrollWheel") * scrollSensitivity;
-        fov = Mathf.Clamp(fov, minZoom, maxZoom);
-        cam.fieldOfView = fov;
+        fov = Mathf.Clamp(fov, minFovZoom, maxFovZoom);
+        zoomSlider.value = 0 + fov;
+        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov, Time.deltaTime);
+        //}
+        // else {
+        //     if (Input.GetAxis("Mouse ScrollWheel") > 0) {
+        //         cam.transform.position = new Vector3(transform.position.x, transform.position.y-.6f, transform.position.z+.2f);
+        //         //transform.Rotate(-1, 0, 0);
+        //     }
+        //     if (Input.GetAxis("Mouse ScrollWheel") < 0) {
+        //         cam.transform.position = new Vector3(transform.position.x, transform.position.y+.6f, transform.position.z-.2f);
+        //         //transform.Rotate(1, 0, 0);
+        //     }
+        // }
+
         // float scrollAxis = Input.GetAxis ("Mouse ScrollWheel");
         // if ( Input.GetAxis("Mouse ScrollWheel") > 0) {     
         //     cam.transform.Translate(Vector3.forward * Time.deltaTime * 10000f * scrollAxis, Space.Self );
