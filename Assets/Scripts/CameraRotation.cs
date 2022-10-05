@@ -12,6 +12,7 @@ public class CameraRotation : MonoBehaviour
 
     // Activate or not Zoom with FOV, take the Distance zoom otherwise
     public bool fovZoom = false;
+    public bool moveAllowed = true;
 
     // Zoom Slider
     public Slider zoomSlider;
@@ -24,9 +25,9 @@ public class CameraRotation : MonoBehaviour
     // Distance Zoom Settings
     public Transform parentObject;
     public float zoomLevel;
-    public float sensitivity=100f;
-    public float speed = 1000;
-    public float maxZoom = 100;
+    public float sensitivity = 0.1f;
+    public float speed = 5f;
+    public float maxZoom = 2f;
     public float zoomPosition;
 
     // Clipping Settings
@@ -74,39 +75,45 @@ public class CameraRotation : MonoBehaviour
             transform.position = parentObject.position + (transform.forward * zoomPosition);
             zoomSlider.value = zoomLevel * 10;
         }
+        if(moveAllowed) {
+            // If Left Mouse button, previous position takes the mouse
+            if (Input.GetMouseButtonDown(0))
+            {
+                previousPosition = cam.ScreenToViewportPoint(Input.mousePosition);
+            }
+            else if (Input.GetMouseButton(0))
+            {
+                Vector3 newPosition = cam.ScreenToViewportPoint(Input.mousePosition);
+                Vector3 direction = previousPosition - newPosition;
+                
+                float rotationAroundYAxis = -direction.x * 180; // camera moves horizontally
+                float rotationAroundXAxis = direction.y * 180; // camera moves vertically
+                
+                parentObject.transform.position = target.position;
+
+                parentObject.transform.Rotate(new Vector3(1, 0, 0), rotationAroundXAxis);
+
+                parentObject.transform.Rotate(new Vector3(0, 1, 0), rotationAroundYAxis, Space.World); // <— This is what makes it work!
+                
+                parentObject.transform.Translate(new Vector3(0, 0, -distanceToTarget));
+
+                previousPosition = newPosition;
+            }
+
+            if(cam.transform.eulerAngles.x < minRotationX) {
+                    //cam.transform.Rotate(new Vector3(1, 0, 0), -rotationAroundXAxis);
+                    cam.transform.rotation = Quaternion.Euler(31,cam.transform.eulerAngles.y , cam.transform.eulerAngles.z);
+            }
+        }
         
-        // If Left Mouse button, previous position takes the mouse
-        if (Input.GetMouseButtonDown(0))
-        {
-            previousPosition = cam.ScreenToViewportPoint(Input.mousePosition);
-        }
-        else if (Input.GetMouseButton(0))
-        {
-            Vector3 newPosition = cam.ScreenToViewportPoint(Input.mousePosition);
-            Vector3 direction = previousPosition - newPosition;
-            
-            float rotationAroundYAxis = -direction.x * 180; // camera moves horizontally
-            float rotationAroundXAxis = direction.y * 180; // camera moves vertically
-            
-            parentObject.transform.position = target.position;
-
-            parentObject.transform.Rotate(new Vector3(1, 0, 0), rotationAroundXAxis);
-
-            parentObject.transform.Rotate(new Vector3(0, 1, 0), rotationAroundYAxis, Space.World); // <— This is what makes it work!
-            
-            parentObject.transform.Translate(new Vector3(0, 0, -distanceToTarget));
-
-            previousPosition = newPosition;
-        }
-
-        if(cam.transform.eulerAngles.x < minRotationX) {
-                //cam.transform.Rotate(new Vector3(1, 0, 0), -rotationAroundXAxis);
-                cam.transform.rotation = Quaternion.Euler(31,cam.transform.eulerAngles.y , cam.transform.eulerAngles.z);
-        }
 
         // foreach(GameObject object in clippingTargetList)
         // {
         //     if()
         // }
+    }
+
+    public void setMoveAllowed(bool statut) {
+        moveAllowed = statut;
     }
 }
