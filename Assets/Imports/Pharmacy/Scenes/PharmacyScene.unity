@@ -14602,11 +14602,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d3a8ac696fe24145bb77b6f3bca9d43, type: 3}
---- !u!1 &223477048 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1226846792853724009, guid: e997b9f757d9c2d478557f5f57e63d0c, type: 3}
-  m_PrefabInstance: {fileID: 55085738}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &223937649 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 89ddbe22f5c6e4a43b0111c9af386f8f, type: 3}
@@ -18299,11 +18294,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 313077802}
   m_CullTransparentMesh: 1
---- !u!1 &316118359 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7027072268796227102, guid: e997b9f757d9c2d478557f5f57e63d0c, type: 3}
-  m_PrefabInstance: {fileID: 55085738}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &316641208 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 17c43955bf75a284bafdb9c5d8f79791, type: 3}
@@ -23154,11 +23144,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444894497}
   m_CullTransparentMesh: 1
---- !u!1 &446022345 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -7908112887098147237, guid: e997b9f757d9c2d478557f5f57e63d0c, type: 3}
-  m_PrefabInstance: {fileID: 55085738}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &446106427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30274,6 +30259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 660743866}
   - component: {fileID: 660743867}
+  - component: {fileID: 660743868}
   m_Layer: 5
   m_Name: ScreenToggle
   m_TagString: Untagged
@@ -30349,11 +30335,44 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
+      m_Calls: []
+  m_IsOn: 0
+--- !u!114 &660743868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660743865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f678de0bf1b53b543800d4cc911767fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xrayTargetList:
+  - {fileID: 1634137073}
+  - {fileID: 1520765256}
+  - {fileID: 115828045}
+  - {fileID: 933374717}
+  - {fileID: 1909709832}
+  - {fileID: 1320737786}
+  - {fileID: 1320737786}
+  - {fileID: 1320737786}
+  - {fileID: 1320737786}
+  xrayTargetToggleList:
+  - {fileID: 1225384553}
+  - {fileID: 687597894}
+  - {fileID: 1793076175}
+  hideTargetList:
+  - {fileID: 1599383182}
+  xrayMaterial: {fileID: 2100000, guid: 5a8ef640201726443b0574decad1b826, type: 2}
+  onXrayEnabled:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1160652795}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 0
+      - m_Target: {fileID: 660743868}
+        m_TargetAssemblyTypeName: Xray, Assembly-CSharp
+        m_MethodName: activateXray
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -30362,10 +30381,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1215578133}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 0
+  onXrayDisabled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 660743868}
+        m_TargetAssemblyTypeName: Xray, Assembly-CSharp
+        m_MethodName: disableXray
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -30374,7 +30396,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
 --- !u!1001 &661178190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31205,6 +31226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 687597893}
   - component: {fileID: 687597894}
+  - component: {fileID: 687597895}
   m_Layer: 5
   m_Name: PrinterToggle
   m_TagString: Untagged
@@ -31280,11 +31302,41 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
+      m_Calls: []
+  m_IsOn: 0
+--- !u!114 &687597895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687597892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f678de0bf1b53b543800d4cc911767fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xrayTargetList:
+  - {fileID: 1634137073}
+  - {fileID: 1520765256}
+  - {fileID: 115828045}
+  - {fileID: 933374717}
+  - {fileID: 1909709832}
+  - {fileID: 1320737786}
+  xrayTargetToggleList:
+  - {fileID: 660743867}
+  - {fileID: 1225384553}
+  - {fileID: 1793076175}
+  hideTargetList:
+  - {fileID: 1215578133}
+  xrayMaterial: {fileID: 2100000, guid: 5a8ef640201726443b0574decad1b826, type: 2}
+  onXrayEnabled:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1599383182}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 0
+      - m_Target: {fileID: 687597895}
+        m_TargetAssemblyTypeName: Xray, Assembly-CSharp
+        m_MethodName: activateXray
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -31293,7 +31345,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  onXrayDisabled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 687597895}
+        m_TargetAssemblyTypeName: Xray, Assembly-CSharp
+        m_MethodName: disableXray
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &689215242
 GameObject:
   m_ObjectHideFlags: 0
@@ -36816,7 +36882,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1001 &807633133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54941,6 +55007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1225384552}
   - component: {fileID: 1225384553}
+  - component: {fileID: 1225384554}
   m_Layer: 5
   m_Name: KioskTopToggle
   m_TagString: Untagged
@@ -55016,11 +55083,41 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
+      m_Calls: []
+  m_IsOn: 0
+--- !u!114 &1225384554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225384551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f678de0bf1b53b543800d4cc911767fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xrayTargetList:
+  - {fileID: 1634137073}
+  - {fileID: 1520765256}
+  - {fileID: 115828045}
+  - {fileID: 933374717}
+  - {fileID: 1909709832}
+  xrayTargetToggleList:
+  - {fileID: 660743867}
+  - {fileID: 687597894}
+  - {fileID: 1793076175}
+  hideTargetList:
+  - {fileID: 1215578133}
+  - {fileID: 1599383182}
+  xrayMaterial: {fileID: 2100000, guid: 5a8ef640201726443b0574decad1b826, type: 2}
+  onXrayEnabled:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1320737786}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 0
+      - m_Target: {fileID: 1225384554}
+        m_TargetAssemblyTypeName: Xray, Assembly-CSharp
+        m_MethodName: activateXray
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -55029,7 +55126,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  onXrayDisabled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1225384554}
+        m_TargetAssemblyTypeName: Xray, Assembly-CSharp
+        m_MethodName: disableXray
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1225781620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77111,11 +77222,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c27866623c684b4fb0ef6da7a91396b, type: 3}
---- !u!1 &1715438831 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -5485071651916884705, guid: e997b9f757d9c2d478557f5f57e63d0c, type: 3}
-  m_PrefabInstance: {fileID: 55085738}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1716155742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80233,6 +80339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1793076174}
   - component: {fileID: 1793076175}
+  - component: {fileID: 1793076176}
   m_Layer: 5
   m_Name: KioskChassisToggle
   m_TagString: Untagged
@@ -80308,80 +80415,60 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
+      m_Calls: []
+  m_IsOn: 0
+--- !u!114 &1793076176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793076173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f678de0bf1b53b543800d4cc911767fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xrayTargetList:
+  - {fileID: 1320737786}
+  xrayTargetToggleList:
+  - {fileID: 660743867}
+  - {fileID: 687597894}
+  - {fileID: 1225384553}
+  hideTargetList:
+  - {fileID: 1215578133}
+  - {fileID: 1599383182}
+  xrayMaterial: {fileID: 2100000, guid: 5a8ef640201726443b0574decad1b826, type: 2}
+  onXrayEnabled:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 446022345}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2080343152}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 316118359}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 223477048}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1715438831}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1793076176}
+        m_TargetAssemblyTypeName: Xray, Assembly-CSharp
+        m_MethodName: activateXray
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  onXrayDisabled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1793076176}
+        m_TargetAssemblyTypeName: Xray, Assembly-CSharp
+        m_MethodName: disableXray
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1797429357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -85718,7 +85805,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1001 &1931267267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92172,11 +92259,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d9ad6a913981c4428b5a455fa691188, type: 3}
---- !u!1 &2080343152 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1100006594289285235, guid: e997b9f757d9c2d478557f5f57e63d0c, type: 3}
-  m_PrefabInstance: {fileID: 55085738}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2082840463
 GameObject:
   m_ObjectHideFlags: 0
