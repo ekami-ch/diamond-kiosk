@@ -54,6 +54,10 @@ public class Xray : MonoBehaviour
     }
 
     public void activateXray() {
+        xrayTargetOldMaterial = new List<Material>();
+        foreach(GameObject targetObject in xrayTargetList) {
+            xrayTargetOldMaterial.Add(targetObject.GetComponent<Renderer>().material);
+        }
         foreach(GameObject targetObject in xrayTargetList) {
             xrayTargetOldMaterial.Add(targetObject.GetComponent<Renderer>().material);
             targetObject.GetComponent<Renderer>().material = xrayMaterial;
