@@ -20,7 +20,16 @@ public class Xray : MonoBehaviour
     {
         currentToggle = GetComponent<Toggle>();
         foreach(GameObject targetObject in xrayTargetList) {
-            xrayTargetOldMaterial.Add(targetObject.GetComponent<Renderer>().material);
+            // if(!targetObject.GetComponent<Renderer>()) {
+            //     foreach(Transform childGameObject in targetObject.GetComponentsInChildren<Transform>()) {
+            //         if(childGameObject.GetComponent<Renderer>().material != null) {
+            //             xrayTargetList.Add(childGameObject);
+            //             xrayTargetOldMaterial.Add(childGameObject.GetComponent<Renderer>().material);
+            //         }                
+            //     }
+            // }
+            // else
+                xrayTargetOldMaterial.Add(targetObject.GetComponent<Renderer>().material);
         }
         currentToggle.onValueChanged.AddListener(delegate {
             if(currentToggle.isOn) {
@@ -56,7 +65,16 @@ public class Xray : MonoBehaviour
     public void activateXray() {
         xrayTargetOldMaterial = new List<Material>();
         foreach(GameObject targetObject in xrayTargetList) {
-            xrayTargetOldMaterial.Add(targetObject.GetComponent<Renderer>().material);
+            // if(!targetObject.GetComponent<Renderer>()) {
+            //     foreach(Transform childGameObject in targetObject.GetComponentsInChildren<Transform>()) {
+            //         if(childGameObject.GetComponent<Renderer>().material != null) {
+            //             xrayTargetList.Add(childGameObject);
+            //             xrayTargetOldMaterial.Add(childGameObject.GetComponent<Renderer>().material);
+            //         }                
+            //     }
+            // }
+            // else
+                xrayTargetOldMaterial.Add(targetObject.GetComponent<Renderer>().material);
         }
         foreach(GameObject targetObject in xrayTargetList) {
             xrayTargetOldMaterial.Add(targetObject.GetComponent<Renderer>().material);
