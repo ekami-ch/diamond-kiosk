@@ -10,6 +10,8 @@ public class Xray : MonoBehaviour
     public List<Toggle> xrayTargetToggleList = new List<Toggle>();
     public List<GameObject> hideTargetList = new List<GameObject>();
 
+    private List<GameObject> targetList = new List<GameObject>();
+
     public Material xrayMaterial;
     public UnityEvent onXrayEnabled;
     public UnityEvent onXrayDisabled;
@@ -19,17 +21,24 @@ public class Xray : MonoBehaviour
     void Start()
     {
         currentToggle = GetComponent<Toggle>();
+        // For each object to xray
         foreach(GameObject targetObject in xrayTargetList) {
-            // if(!targetObject.GetComponent<Renderer>()) {
-            //     foreach(Transform childGameObject in targetObject.GetComponentsInChildren<Transform>()) {
-            //         if(childGameObject.GetComponent<Renderer>().material != null) {
-            //             xrayTargetList.Add(childGameObject);
-            //             xrayTargetOldMaterial.Add(childGameObject.GetComponent<Renderer>().material);
-            //         }                
-            //     }
-            // }
-            // else
+            // If the object doesn't have a Renderer
+            if(targetObject.GetComponent<Renderer>() == null) {
+                // Get all the child elements
+                foreach(Transform childGameObject in targetObject.GetComponentsInChildren<Transform>()) {
+                    // If child has renderer, add the object to targetList and his material to old material list
+                    if(childGameObject.gameObject.GetComponent<Renderer>() != null) {
+                        targetList.Add(childGameObject.gameObject);
+                        xrayTargetOldMaterial.Add(childGameObject.gameObject.GetComponent<Renderer>().material);
+                    }                
+                }
+            }
+            else {
+                targetList.Add(targetObject);
                 xrayTargetOldMaterial.Add(targetObject.GetComponent<Renderer>().material);
+            }
+                
         }
         currentToggle.onValueChanged.AddListener(delegate {
             if(currentToggle.isOn) {
@@ -52,31 +61,16 @@ public class Xray : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        // if(currentToggle.isOn) {
-        //     onXrayEnabled.Invoke();
-        // }
-        // else
-        // {
-        //     onXrayDisabled.Invoke();
-        // }
-    }
+    {}
 
     public void activateXray() {
+        // Reset old material List
         xrayTargetOldMaterial = new List<Material>();
-        foreach(GameObject targetObject in xrayTargetList) {
-            // if(!targetObject.GetComponent<Renderer>()) {
-            //     foreach(Transform childGameObject in targetObject.GetComponentsInChildren<Transform>()) {
-            //         if(childGameObject.GetComponent<Renderer>().material != null) {
-            //             xrayTargetList.Add(childGameObject);
-            //             xrayTargetOldMaterial.Add(childGameObject.GetComponent<Renderer>().material);
-            //         }                
-            //     }
-            // }
-            // else
-                xrayTargetOldMaterial.Add(targetObject.GetComponent<Renderer>().material);
+        // For each object to xray
+        foreach(GameObject targetObject in targetList) {
+            xrayTargetOldMaterial.Add(targetObject.GetComponent<Renderer>().material);
         }
-        foreach(GameObject targetObject in xrayTargetList) {
+        foreach(GameObject targetObject in targetList) {
             xrayTargetOldMaterial.Add(targetObject.GetComponent<Renderer>().material);
             targetObject.GetComponent<Renderer>().material = xrayMaterial;
         }
@@ -86,8 +80,8 @@ public class Xray : MonoBehaviour
     }
 
     public void disableXray() {
-        for (int index = 0; index < xrayTargetList.Count; index++) {
-            xrayTargetList.ToArray()[index].GetComponent<Renderer>().material = xrayTargetOldMaterial.ToArray()[index];
+        for (int index = 0; index < targetList.Count; index++) {
+            targetList.ToArray()[index].GetComponent<Renderer>().material = xrayTargetOldMaterial.ToArray()[index];
         }
         foreach(GameObject targetObject in hideTargetList) {
             targetObject.SetActive(true);
